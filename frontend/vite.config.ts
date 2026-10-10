@@ -19,6 +19,13 @@ export default defineConfig({
     https: hasSsl ? {
       key: fs.readFileSync(keyPath),
       cert: fs.readFileSync(certPath)
-    } : undefined
+    } : undefined,
+    proxy: {
+      '/api': {
+        target: hasSsl ? 'https://127.0.0.1:8000' : 'http://127.0.0.1:8000',
+        changeOrigin: true,
+        secure: false
+      }
+    }
   }
 })

@@ -8,9 +8,13 @@ import {
 } from '../types/cardio';
 import { DEMO_ARCHETYPES, CV_BENCHMARK_STATIC } from '../constants/demoData';
 
-const BASE_URL = typeof window !== 'undefined' && window.location.protocol === 'https:'
-  ? 'https://localhost:8000/api/v1'
-  : 'https://localhost:8000/api/v1';
+// Base URL configuration:
+// In Vercel deployment and local dev proxy, use same-origin relative path '/api/v1'
+// (requests to /api/(.*) are routed to the backend service via Vercel rewrites).
+// Falls back to import.meta.env.VITE_API_BASE_URL if explicitly provided.
+const BASE_URL = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_BASE_URL)
+  ? import.meta.env.VITE_API_BASE_URL
+  : '/api/v1';
 
 class ApiClient {
   private isOffline = false;
