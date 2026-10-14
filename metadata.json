@@ -1,0 +1,7 @@
+{
+  "name": "CardioVision 3D",
+  "description": "Multi-Vessel CAD Risk Prediction & 3D Interactive Spatial Visualization Platform",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
